@@ -27,6 +27,12 @@ class full_test:
         for i in xrange(n):
             processes.add(subprocess.Popen(cmd, shell=True))
 
+    def call_nv_decoder_n_tile(self, n, res, bitrate):
+        processes = set()
+        cmd = ['/home/cshao/Downloads/Video_Codec_SDK_7.0.1/Samples/NvDecodeGL/NvDecodeGL -i=/home/cshao/Videos/jellyfish_tiletest/jellyfish-'+res+'-'+bitrate+'bps_main_nosound_fast_short.mp4 -nointerop']
+        for i in xrange(n):
+            processes.add(subprocess.Popen(cmd, shell=True))
+
     def call_nv_decoder_n_hd(self, n):
         processes = set()
         cmd = ['/home/cshao/Downloads/Video_Codec_SDK_7.0.1/Samples/NvDecodeGL/NvDecodeGL -i=/home/cshao/Downloads/Video_Codec_SDK_7.0.1/Samples/common/video/plush1_720p_10s.m2v']
