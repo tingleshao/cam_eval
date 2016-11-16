@@ -87,16 +87,36 @@ class full_test:
         ax[2].set_xticklabels(('3m', '5m', '10m'))
         plt.show()
 
+    def make_bar_chart_tile(self):
+        stream_1 = (87.16, 326.0, 681.0)
+        stream_4 = (89.84, 599.5, 1667.25)
+
+        ind = np.arange(3)
+        width = 0.3
+        fig, ax = plt.subplots()
+        rects1 = ax.bar(ind, stream_1, width, color='r')
+        rects2 = ax.bar(ind + width, stream_4, width, color='y')
+#        rects2 = ax[0].bar(ind + width*2, fourk_3, width, color='b')
+        ax.set_ylabel('decoding speed (fps)')
+        #ax.set_title()
+        ax.set_xticks(ind + width)
+        ax.set_xticklabels(('4k', 'hd', '720p'))
+        ax.set_ylim([0,1700])
+
+        plt.show()
 
 def main():
     idec = full_test()
-    #n = int(sys.argv[1])
-    #res = sys.argv[2]
-    #bitrate = sys.argv[3]
+    n = int(sys.argv[1])
+    res = sys.argv[2]
+    bitrate = sys.argv[3]
 #    idec.call_nv_decoder_n(n)
     #idec.call_nv_decoder_n_send_null(n)
 #    idec.call_nv_decoder_n(n, res, bitrate)
-    idec.make_bar_chart()
+    #idec.make_bar_chart()
+    idec.call_nv_decoder_n_tile(n, res, bitrate)
+    #idec.make_bar_chart_tile()
+
 
 if __name__ == "__main__":
     main()
